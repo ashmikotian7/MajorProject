@@ -145,9 +145,9 @@ const Upload = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/20">
+    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-blue-900 to-blue-950">
       {/* Header */}
-      <header className="border-b border-border/50 bg-gradient-to-r from-background to-secondary/20 backdrop-blur-sm sticky top-0 z-40">
+      <header className="border-b border-border/50 bg-gradient-to-r from-blue-950 to-blue-900 backdrop-blur-sm sticky top-0 z-40">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link to="/" className="flex items-center gap-2 text-foreground hover:text-primary transition-colors">
             <ArrowLeft className="h-4 w-4 md:h-5 md:w-5" />
@@ -173,7 +173,7 @@ const Upload = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-border/50 bg-gradient-to-r from-background to-secondary/20">
+          <div className="md:hidden border-t border-border/50 bg-gradient-to-r from-blue-950 to-blue-900">
             <nav className="container mx-auto px-4 py-4 space-y-3">
               <Link 
                 to="/" 
