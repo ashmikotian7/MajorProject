@@ -11,6 +11,8 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import MoreInfo from "./pages/Moreinfo";
 import NotFound from "./pages/NotFound";
+import Work from "./pages/work";
+import SkinGuardSlides from "./pages/SkinGuardSlides";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +29,8 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/moreinfo" element={<MoreInfo />} />
+          <Route path="/work" element={<Work />} />
+          <Route path="/SkinGuardSlides" element={<SkinGuardSlides />} />
 
           {/* Catch-all 404 */}
           <Route path="*" element={<NotFound />} />

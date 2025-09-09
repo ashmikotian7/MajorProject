@@ -28,7 +28,7 @@ const ChatBot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "Hello! I'm SkinGuard Assistant. I can help answer questions about skin health, our AI detection tool, and general information. How can I assist you today?",
+      text: "Hello! I'm SkinDetect AI Assistant. I can help answer questions about skin health, our AI detection tool, and general information. How can I assist you today?",
       isBot: true,
       timestamp: new Date()
     }
@@ -123,9 +123,9 @@ const ChatBot = () => {
       <div className="fixed bottom-6 right-6 z-50">
         <Button
           onClick={() => setIsOpen(true)}
-          className="medical-button-primary rounded-full w-16 h-16 shadow-lg hover:shadow-xl animate-medical-glow"
+          className="bg-teal-500 hover:bg-teal-400 rounded-full w-16 h-16 shadow-lg"
         >
-          <MessageCircle className="h-6 w-6" />
+          <MessageCircle className="h-6 w-6 text-black" />
         </Button>
       </div>
     );
@@ -134,18 +134,18 @@ const ChatBot = () => {
   return (
     <div className="fixed bottom-6 right-6 z-50">
       <Card className={cn(
-        "medical-card w-80 md:w-96 transition-all duration-300",
+        "bg-black/90 border border-teal-500/50 w-80 md:w-96 text-white transition-all duration-300",
         isMinimized ? "h-16" : "h-[500px]"
       )}>
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-border/50 bg-gradient-to-r from-primary/5 to-accent/5 rounded-t-xl">
+        <div className="flex items-center justify-between p-4 border-b border-teal-500/40 bg-black/70 rounded-t-xl">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center">
-              <Bot className="h-4 w-4 text-white" />
+            <div className="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center">
+              <Bot className="h-4 w-4 text-black" />
             </div>
             <div>
-              <h3 className="font-semibold text-foreground text-sm">SkinGuard Assistant</h3>
-              <p className="text-xs text-muted-foreground">Online • Skin Health Support</p>
+              <h3 className="font-semibold text-sm text-teal-300">SkinDetect AI Assistant</h3>
+              <p className="text-xs text-gray-400">Online • Skin Health Support</p>
             </div>
           </div>
           <div className="flex items-center gap-1">
@@ -153,17 +153,17 @@ const ChatBot = () => {
               variant="ghost"
               size="sm"
               onClick={() => setIsMinimized(!isMinimized)}
-              className="h-8 w-8 p-0 hover:bg-secondary/50"
+              className="h-8 w-8 p-0 hover:bg-teal-500/20"
             >
-              {isMinimized ? <Maximize2 className="h-4 w-4" /> : <Minimize2 className="h-4 w-4" />}
+              {isMinimized ? <Maximize2 className="h-4 w-4 text-teal-300" /> : <Minimize2 className="h-4 w-4 text-teal-300" />}
             </Button>
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setIsOpen(false)}
-              className="h-8 w-8 p-0 hover:bg-secondary/50"
+              className="h-8 w-8 p-0 hover:bg-red-500/20"
             >
-              <X className="h-4 w-4" />
+              <X className="h-4 w-4 text-red-400" />
             </Button>
           </div>
         </div>
@@ -171,7 +171,7 @@ const ChatBot = () => {
         {!isMinimized && (
           <>
             {/* Messages */}
-            <div className="flex-1 p-4 space-y-4 overflow-y-auto h-80 bg-gradient-to-b from-background to-secondary/20">
+            <div className="flex-1 p-4 space-y-4 overflow-y-auto h-80 bg-black/60">
               {messages.map((message) => (
                 <div
                   key={message.id}
@@ -181,29 +181,29 @@ const ChatBot = () => {
                   )}
                 >
                   {message.isBot && (
-                    <div className="w-6 h-6 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <Bot className="h-3 w-3 text-white" />
+                    <div className="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <Bot className="h-3 w-3 text-black" />
                     </div>
                   )}
                   <div
                     className={cn(
                       "max-w-[75%] p-3 rounded-lg text-sm",
                       message.isBot 
-                        ? "bg-gradient-to-br from-card to-secondary/50 border border-border/50 text-foreground" 
-                        : "bg-gradient-to-r from-primary to-primary-dark text-primary-foreground"
+                        ? "bg-black/70 border border-teal-500/40 text-gray-200" 
+                        : "bg-teal-500 text-black"
                     )}
                   >
                     <p className="leading-relaxed">{message.text}</p>
                     <p className={cn(
                       "text-xs mt-1 opacity-70",
-                      message.isBot ? "text-muted-foreground" : "text-primary-foreground/70"
+                      message.isBot ? "text-gray-400" : "text-black/70"
                     )}>
                       {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </p>
                   </div>
                   {!message.isBot && (
-                    <div className="w-6 h-6 bg-gradient-to-r from-secondary to-muted rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <User className="h-3 w-3 text-foreground" />
+                    <div className="w-6 h-6 bg-gray-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <User className="h-3 w-3 text-white" />
                     </div>
                   )}
                 </div>
@@ -211,14 +211,14 @@ const ChatBot = () => {
               
               {isTyping && (
                 <div className="flex gap-2 justify-start">
-                  <div className="w-6 h-6 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <Bot className="h-3 w-3 text-white" />
+                  <div className="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <Bot className="h-3 w-3 text-black" />
                   </div>
-                  <div className="bg-gradient-to-br from-card to-secondary/50 border border-border/50 p-3 rounded-lg">
+                  <div className="bg-black/70 border border-teal-500/40 p-3 rounded-lg">
                     <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                      <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                      <div className="w-2 h-2 bg-teal-400 rounded-full animate-bounce"></div>
+                      <div className="w-2 h-2 bg-teal-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                      <div className="w-2 h-2 bg-teal-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                     </div>
                   </div>
                 </div>
@@ -227,30 +227,30 @@ const ChatBot = () => {
             </div>
 
             {/* Medical Disclaimer */}
-            <div className="px-4 py-2 bg-warning/10 border-y border-warning/20">
+            <div className="px-4 py-2 bg-red-500/10 border-y border-red-500/30">
               <div className="flex items-start gap-2">
-                <AlertCircle className="h-3 w-3 text-warning mt-0.5 flex-shrink-0" />
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <AlertCircle className="h-3 w-3 text-red-400 mt-0.5 flex-shrink-0" />
+                <p className="text-xs text-gray-400 leading-relaxed">
                   For educational purposes only. Not medical advice. Consult healthcare professionals for medical concerns.
                 </p>
               </div>
             </div>
 
             {/* Input */}
-            <div className="p-4 border-t border-border/50 bg-gradient-to-r from-background to-secondary/20 rounded-b-xl">
+            <div className="p-4 border-t border-teal-500/40 bg-black/70 rounded-b-xl">
               <div className="flex gap-2">
                 <Input
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Ask about skin health..."
-                  className="medical-input flex-1 text-sm"
+                  className="flex-1 text-sm bg-black/50 border border-teal-500/30 text-white"
                   disabled={isTyping}
                 />
                 <Button
                   onClick={handleSendMessage}
                   disabled={!inputValue.trim() || isTyping}
-                  className="medical-button-primary px-3 py-2"
+                  className="bg-teal-500 hover:bg-teal-400 text-black px-3 py-2"
                 >
                   <Send className="h-4 w-4" />
                 </Button>
